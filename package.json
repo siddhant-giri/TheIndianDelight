@@ -3,19 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "browser-image-resizer": "^2.1.0",
+    "daisyui": "^2.14.1",
+    "firebase": "^9.6.9",
+    "framer-motion": "^6.3.0",
+    "postcss-cli": "^9.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-icons": "^3.9.0",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "3.4.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^6.1.2",
+    "react-toastify": "^5.5.0",
+    "reactstrap": "^8.4.1",
+    "uuid": "^7.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:css" : "postcss src/style/tailwind.css -o src/style/main.css",
+    "build:watch" : "postcss src/style/tailwind.css -o src/style/main.css --watch"
+
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +51,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
   }
 }

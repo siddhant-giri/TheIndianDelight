@@ -1,38 +1,49 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montez&display=swap');
+
+/* *{
+    background: #222222;
+} */
+
+
+.darkbg{
+    background-color: #222222;
+    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.montezfont{
+    font-family: 'Montez', cursive;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.outfitfont{
+    font-family: 'Outfit', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* STYLING FOR SIGNIN AND SIGNUP */
+
+.loginbtn{
+    background-color: #DCCA87;
+    color: #222222;
+    width: 100%;
+    padding: 6px;
 }
 
-.App-link {
-  color: #61dafb;
+.primaryTextColor{
+    color: #DCCA87;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.secondaryTextColor{
+    color : #222222
 }
+
+.inputfield{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #DCCA87;
+    color: white;
+    
+}
+
+/* STYLING FOR ADMIN PAGE */
