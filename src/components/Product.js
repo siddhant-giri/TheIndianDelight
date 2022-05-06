@@ -67,17 +67,17 @@ const Product = ({product, productKey}) => {
 
 
   return (
-    <>
-    <Row>
+    <div className='darkbg outfitfont'>
+    <Row className='darkbg'>
       <Col
         md="1"
         className="d-flex justify-content-center align-items-center"
       >
         <div className="icon" onClick={() => updateImpProduct()}>
           {product.star ? (
-            <FaStar className=" text-primary" />
+            <FaStar className="primaryTextColor" />
           ) : (
-            <FaRegStar className=" text-info" />
+            <FaRegStar className=" primaryTextColor" />
           )}
         </div>
       </Col>
@@ -88,10 +88,12 @@ const Product = ({product, productKey}) => {
         <img height={100} width={100} src={product.picture} alt="" className="img-circle profile" />
       </Col>
       <Col md="8" onClick={() => viewSingleProduct(product)}>
-        <div className="text-primary">{product.name}</div>
+        <div className="primaryTextColor">{product.name}</div>
 
-        <div className="text-secondary">{product.type}</div>
-        <div className="text-secondary">{product.price}</div>
+        <div className="greyfontcolor">Category : {product.type}</div>
+        <div className="greyfontcolor">Rs.{product.price}</div>
+        <div className="greyfontcolor"><FaStar /> <span className=''>{product.rating}</span></div>
+
 
       </Col>
       <Col
@@ -101,15 +103,16 @@ const Product = ({product, productKey}) => {
         <MdDelete
           onClick={() => deleteProduct()}
           color="danger"
-          className="text-danger icon"
+          className="text-danger icon iconsize" 
+
         />
         <MdEdit
-          className="icon text-info ml-2"
+          className="icon primaryTextColor ml-2 iconsize"
           onClick={() => updateProduct()}
         />
       </Col>
     </Row>
-  </>
+  </div>
   )
 }
 

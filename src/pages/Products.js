@@ -31,9 +31,9 @@ const Products = () => {
 
   if(isLoading){
     return (
-      <div className='center'>
-          <Spinner color='primary' />
-          <div className='text-primary'>Loading...</div>
+      <div className='text-center'>
+          <Spinner className='primaryTextColor' />
+          <div className='primaryTextColor outfitfont'>Loading...</div>
       </div>
     )
   }
@@ -43,30 +43,38 @@ const Products = () => {
   }
 
   return (
-    <>
-    
-    <Container className='mt-4'>
+    <div className='darkbg'>
+
       
+    
+    <Container className=' darkbg'>
+      <div className='text-center rounded loginbtn' onClick={AddProduct}>
+        <span className='outfitfont ' >
+    <MdAdd className='fab icon'   />
+    Add more Products
+    </span>
+    </div>  
         {
           products.length === 0 && !isLoading ? (
-              <div className='center text-large text-primary'>
+              <div className='center text-large primaryTextColor darkbg'>
                 No Products found in database
               </div>
           ) : (
-              <ListGroup>
+              <ListGroup className='darkbg'>
                 {
                   Object.entries(products).map(([key, value]) => (
-                    <ListGroupItem key={key}>
+                    
+                    <ListGroupItem style={{background : '#222222'}} className='m-2 border-bottom border-top-0 border-right-0 border-left-0' key={key}>
                       <Product product={value} productKey={key} />
                     </ListGroupItem>
+                    
           ))
                 }
               </ListGroup>
           )
         }
-        <MdAdd className='fab icon' onClick={AddProduct} />
     </Container>
-    </>
+    </div>
   )
       }
       

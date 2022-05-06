@@ -13,7 +13,7 @@ import { toast, Toast } from 'react-toastify'
 import { getDatabase, ref, remove, update } from 'firebase/database'
 import { useNavigate } from 'react-router-dom'
 
-const HomeProduct = ({product}) => {
+const SectionProduct = ({product}) => {
 
     const {dispatch} = useContext(ProductContext);
     const history = useNavigate()
@@ -30,12 +30,13 @@ const HomeProduct = ({product}) => {
 
     return(
       
-        <Col onClick={()=>viewSingleProduct(product)} >  
-                <img height={150} width={150} src={product.picture} className="rounded-circle imghover" />
-                <p className='text-gray-100 text-6xl lightfont'>{product.name}</p>
+        <Col  lg={3} onClick={()=>viewSingleProduct(product)} className='p-2 mt-5 cardhover' >  
+                <img src={product.picture} height={150} width={250} style={{borderRadius : "8px"}}/>
+                <h4 className='text-gray-100 text-6xl mt-2'>{product.name}</h4>
                 <Row>
+                <Col><p className='greyfontcolor'><FaStar /> {product.rating}</p></Col>
                
-                <Col><p><FaRupeeSign /> {product.price}</p></Col>
+                <Col><p className='greyfontcolor'><FaRupeeSign /> {product.price}</p></Col>
                 </Row>
                 </Col>
     )
@@ -43,4 +44,4 @@ const HomeProduct = ({product}) => {
 }
 
 
-export default HomeProduct
+export default SectionProduct

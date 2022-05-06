@@ -50,7 +50,6 @@ const OrderSummary = () => {
         
 
         setResults(fetchedResults);
-       
         
 
         // setResults(finalresult)
@@ -65,25 +64,36 @@ const OrderSummary = () => {
     })
 
 
+  if(!results){
+        return(
+        <div>
+            <h1>No Past orders found</h1>
+        </div>
+        )
+    }
+
   return (
-    <div>
-        <ListGroup>
+    <div >
+        <ListGroup >
         {
             
             results.filter(result => result.uid === context.user.uid).map(
                 result => result.orders.map(
                     item => (
                         
-                        <ListGroupItem key={item.id} onClick={() => viewSingleProduct(item)}>
-                                <Row>
-                                    <Col>
-                                        <img height={50} src={item.picture} />
+                        <ListGroupItem key={item.id} className='mt-2 p-4' style={{background : '#181818'}}  >
+                                <Row className='blackbg'>
+                                    <Col lg={2}>
+                                        <img height={50} src={item.picture} className="rounded-circle" />
                                     </Col>
-                                    <Col className="text-center">
-                                        <div className='text-primary'>
+                                    <Col lg={6} className="text-left">
+                                        <div className='primaryTextColor'>
                                             {item.name}
                                         </div>
-                                        <span>price :- {item.price}</span>
+                                        <span className='greyfontcolor'>Rs. {item.price}</span>
+                                    </Col>
+                                    <Col >
+                                    <button className='loginbtn' onClick={() => viewSingleProduct(item)}>Reorder</button>
                                     </Col>
                                     
                                 </Row>

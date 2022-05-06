@@ -5,7 +5,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 //react router
-import {BrowserRouter as Router , Route, Routes} from "react-router-dom"
+import {BrowserRouter as Router , Route, Routes, useParams} from "react-router-dom"
 
 //toastify imports
 import { ToastContainer } from 'react-toastify';
@@ -38,6 +38,7 @@ import { CartContext } from './context/CartContext';
 import Checkout from './pages/Checkout';
 import Address from './pages/Address';
 import Account from './pages/Account';
+import Search from './pages/Search';
 
 
 //init firebase
@@ -117,7 +118,7 @@ const App = () => {
         <ToastContainer />
       <UserContext.Provider value={{user, setUser}}>
         <ProductContext.Provider value={{state, dispatch}}>
-          <CartContext.Provider value={{cartItem, setCartItem}}>
+          <CartContext.Provider value={{ cartItem, setCartItem}}>
             {/* <AddressContext.Provider value={{address,setAddress}}> */}
           <Routes>
             <Route exact path='/' element={<Home />}/>
@@ -130,6 +131,7 @@ const App = () => {
             <Route exact path='*' element={<PageNotFound />}/>
             <Route exact path='/address' element={<Address />}/>
             <Route exact path='/myaccount' element={<Account />} />
+            <Route exact path='/search/:id' element={<Search />} />
             {/* <Route exact path='/ordersummary' element={<OrderSummary />}/> */}
 
           </Routes>

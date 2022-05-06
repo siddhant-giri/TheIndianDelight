@@ -7,7 +7,12 @@ import { CartContext } from '../context/CartContext'
 import { UserContext } from '../context/UserContext';
 import { v4 } from 'uuid'
 import instance from '../apis/instance'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
+import {MdDelete} from "react-icons/md"
+import {FaStar, FaEdit, FaStripe} from "react-icons/fa"
+
 
 
 
@@ -63,7 +68,8 @@ const Checkout = () => {
 
 
         useEffect(()=>{
-            fetchDetails()
+            fetchDetails();
+            
         })
 
 
@@ -107,24 +113,40 @@ const Checkout = () => {
 
 
   return (
-    <div>
-        <h1> Your Cart </h1>
-        <ListGroup>
+    <div className='darkbg homebody outfitfont text-white'>
+        <Header /> 
+
+<Row className='px-5 mt-5'>
+    <Col className='mt-5'>
+        <h1 className='montezfont primaryTextColor mt-5'> Your Cart </h1></Col>
+        </Row>
+
+        <Row className='px-5  '>
+            
+            <Col lg={5}>
+        <ListGroup >
                 {
                     
                     contextCart.cartItem.map(
                         item => (
-                            <ListGroupItem key={item.id}>
-                                <Row>
-                                    <Col>
-                                        <img height={50} src={item.picture} />
+                            <ListGroupItem key={item.id} className="mt-2 p-4" style={{background : '#181818'}} >
+                                <Row >
+                                    <Col lg={3}>
+                                        <img height={100} src={item.picture} className="rounded-circle" />
                                     </Col>
-                                    <Col className="text-center">
-                                        <div className='text-primary'>
-                                            {item.name}
+                                    <Col lg={6} className="text-left ">
+                                        <div className='primaryTextColor mt-2'>
+                                            <h4>{item.name}</h4>
                                         </div>
-                                        <span>price :- {item.price}</span>
-                                        <Button onClick={()=>removeItem(item)} color='danger'>Remove</Button>
+                                        <Row>
+                <Col><p className='greyfontcolor'><FaStar /> {item.rating}</p></Col>
+               
+                <Col><p className='greyfontcolor'>Rs. {item.price}</p></Col>
+                </Row>
+                                    </Col>
+                                    <Col className=''>
+                                    <Button onClick={()=>removeItem(item)} className="border-0 cardhover text-dark mt-3" style={{background:"#DCCA87"}}><MdDelete /></Button>
+                                    
                                     </Col>
                                     
                                 </Row>
@@ -133,20 +155,27 @@ const Checkout = () => {
                     )
                 }
         </ListGroup>
-        <Card>
-            <CardBody>
-                Delivery Address : {address}
-            </CardBody>
-        </Card>
-        {
+       
+            
+            </Col>
+
+
+
+            <Col lg={7}>
+            {
             contextCart.cartItem.length >= 1 ? (
-                <Card className='text-center mt-3'>
-                    <CardHeader>
-                        Grand Total
-                    </CardHeader>
-                    <CardBody>Your amount for {contextCart.cartItem.length} product is {amount}</CardBody>
+                <Card className='text-left mt-2' style={{background : '#2F2F2F'}}>
                     
-                    <CardFooter>
+                    <CardHeader className='darkbg '>
+                        Billing Details
+                    </CardHeader>
+                    <CardBody style={{background : '#2F2F2F'}} className="greyfontcolor">
+                        <Row>
+                       <Col lg={8}> Your amount for {contextCart.cartItem.length} food item</Col> <Col lg={4}>Rs. {amount}</Col>
+                        </Row>
+                        </CardBody>
+                    
+                    <CardFooter style={{background : '#2F2F2F'}}>
                         
                         <StripeCheckoutButton
                         stripeKey='pk_test_51IAUiJIyZuCYkP3XctPVShj2uFTTGpeEmzDz3g65OUUGboXJtOlF8Gr7igvvCPwK2TphoI4UWVLATQNtoeKn7o3S00DHzy9PzW'
@@ -158,15 +187,42 @@ const Checkout = () => {
                         billingAddress
                         email={context.user.email}
                         >
-                        <Button color='success'>Pay Here</Button>
+                        <button className='loginbtn' >
+                             Pay with <FaStripe className='ml-1' style={{fontSize : "34px"}}/></button>
                         </StripeCheckoutButton>
                         
                         </CardFooter>
                 </Card>
             ) : (
-                <h1 className='text-warning'>Cart is Empty</h1>
+                <h1 className='primaryTextColor mt-5'>Cart is Empty :(</h1>
             ) 
         }
+            
+            <Card className='darkbg mt-4'>
+            <CardBody className='darkbg'>
+                <Row>
+                    <Col lg={8}>
+                <span className='primaryTextColor'>Delivery Address</span> : {address}
+                </Col>
+                <Col lg={4}> 
+                    <Link to="/address" className='loginbtn px-3 rounded'>Edit Address <FaEdit className='ml-2'/></Link>
+                </Col>
+                </Row>
+            </CardBody>
+        </Card>
+            
+            </Col>
+
+        </Row>
+
+
+
+
+        <Footer />
+
+
+        
+       
     </div>
   )
 }

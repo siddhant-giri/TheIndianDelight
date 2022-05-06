@@ -124,20 +124,20 @@ const SignIn = () => {
 
                   </FormGroup>
                   <FormGroup>
-                  <button onClick={handleEmailSubmit} type='submit' block className='rounded-0 border-0 secondaryTextColor loginbtn mt-3'>
+                  <button onClick={handleEmailSubmit} type='submit' block className='p-2 rounded-0 secondaryTextColor loginbtn mt-3'>
                     Sign In
                   </button>
                   </FormGroup>
                   <FormGroup>
                   <p className='text-white text-center'> or </p>
-                  <button onClick={handleGoogleLoginSubmit}  type='submit' block className='rounded-0 border-0 secondaryTextColor loginbtn'>
-                    <FaGoogle /> Sign In with Google
+                  <button onClick={handleGoogleLoginSubmit}  type='submit' block className='p-2 rounded-0  secondaryTextColor loginbtn'>
+                    <FaGoogle className='mr-2' /> Sign In with Google
                   </button>
                   </FormGroup>
                   <FormGroup>
                   <p className='text-white text-center'>
                   Don't have an account yet ?
-                  <Link className='ml-2 primaryTextColor' to='/signup'>Signup</Link></p>
+                  <Link className='ml-2 linkhover' to='/signup'>Signup</Link></p>
                   </FormGroup>
                 </CardBody>
                

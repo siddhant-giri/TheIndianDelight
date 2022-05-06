@@ -41,6 +41,7 @@ const AddProducts = () => {
   const [price, setPrice] = useState("");
   const [consistOf, setConsistOf] = useState("");
   const [benefits, setBenefits] = useState("");
+  const [rating, setRating] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [star, setStar] = useState(false);
@@ -53,6 +54,7 @@ const AddProducts = () => {
     setPrice(productToUpdate.price);
     setConsistOf(productToUpdate.consistOf);
     setBenefits(productToUpdate.benefits);
+    setRating(productToUpdate.rating);
     setStar(productToUpdate.star);
     setDownloadUrl(productToUpdate.picture);
 
@@ -124,6 +126,7 @@ const AddProducts = () => {
         price,
         consistOf,
         benefits,
+        rating,
         picture : downloadUrl,
         star
       })
@@ -142,6 +145,7 @@ const AddProducts = () => {
         price,
         consistOf,
         benefits,
+        rating,
         picture : downloadUrl,
         star
       })
@@ -166,14 +170,28 @@ const AddProducts = () => {
   }
 
   const options = [
-    { label: 'Choose Option', value: '' },
+    { label: 'Choose Category ', value: '' },
     { label: 'Thalis', value: 'thalis' },
     { label: 'Biryanis', value: 'biryanis' },
     { label: 'Sweets', value: 'sweets' },
-    { label: 'Main Course', value: 'main course' },
+    { label: 'Main Course', value: 'maincourse' },
     { label: 'Starters', value: 'starters' },
-    { label: 'Others', value: 'others' },
     { label: 'Desserts', value: 'desserts' },
+    { label: 'Salads', value: 'salads' },
+    { label: 'Others', value: 'others' },
+    
+
+
+    
+  ];
+
+  const ratings = [
+    { label: 'Choose Rating ', value: '' },
+    { label: '1', value: '1' },
+    { label: '2', value: '2' },
+    { label: '3', value: '3' },
+    { label: '4', value: '4' },
+    { label: '5', value: '5' }
 
 
     
@@ -183,25 +201,29 @@ const AddProducts = () => {
     setType(event.target.value);
   };
 
+  const handleRatingChange = (event) => {
+    setRating(event.target.value);
+  };
+
   if(context.user?.email !== "sidgiri2000@gmail.com"){
     return <Navigate to="/" />
   }
 
   return (
-    <>
+    <div className='darkbg text-white outfitfont'>
     <Header />
-    <Container fluid className="mt-5">
+    <Container fluid >
       
       <Row>
-        <Col md="6" className="offset-md-3 p-2">
+        <Col md="6" className="offset-md-3 p-5">
           <Form onSubmit={handleSubmit}>
             <div className="text-center">
               {isUploading ? (
                 <Spinner type="grow" color="primary" />
               ) : (
                 <div>
-                  <label htmlFor="imagepicker" className="">
-                    <img src={downloadUrl} alt="" className="profile" />
+                  <label htmlFor="imagepicker" className="text-center">
+                    <img src={downloadUrl} alt="" height={220} width={220} className="profile" />
                   </label>
                   <input
                     type="file"
@@ -217,6 +239,7 @@ const AddProducts = () => {
             </div>
 
             <FormGroup>
+              
               <Input
                 type="text"
                 name="name"
@@ -227,15 +250,31 @@ const AddProducts = () => {
               />
             </FormGroup>
             <FormGroup>
-            <label>
-        Select the type of food
-        <select value={type} onChange={handleChange}>
+            
+       
+       <Row>
+                <Col>
+                <select value={type} onChange={handleChange} className="darkbg inputfield">
           {options.map((option) => (
             <option value={option.value}>{option.label}</option>
           ))}
         </select>
-      </label>
+                </Col>
+                <Col>
+                <select value={rating} onChange={handleRatingChange} className="darkbg inputfield">
+          {ratings.map((rate) => (
+            <option value={rate.value}>{rate.label}</option>
+          ))}
+        </select>
+                </Col>
+
+
+       </Row>
+
+        
+     
             </FormGroup>
+            
             <FormGroup>
               <Input
                 type="number"
@@ -278,19 +317,19 @@ const AddProducts = () => {
                 <span className="text-right">Mark as Star</span>
               </Label>
             </FormGroup>
-            <Button
+            <button
               type="submit"
-              color="primary"
+              
               block
-              className="text-uppercase"
+              className="text-uppercase loginbtn rounded"
             >
               {isUpdate ? "Update Product" : "Add Product"}
-            </Button>
+            </button>
           </Form>
         </Col>
       </Row>
     </Container>
-    </>
+    </div>
   )
 }
 

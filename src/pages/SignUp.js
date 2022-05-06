@@ -8,7 +8,7 @@ import { Navigate} from 'react-router-dom'
 
 import thalipic from "../images/signupthali.png"
 import logo from "../images/logo.png"
-import {FcGoogle} from "react-icons/fc"
+import {FaGoogle} from "react-icons/fa"
 import {Link} from "react-router-dom"
 
 const SignUp = () => {
@@ -39,22 +39,45 @@ const SignUp = () => {
     handleSignup()
   }
 
+    //Google Authentication
+
+  
+    const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+    const handleGoogleLogin = () => {
+      firebase.auth().signInWithPopup(googleProvider).then((res) => {
+        console.log(res.user)
+        firebase.auth().onAuthStateChanged(() =>{
+        
+          context.setUser({
+            email : res.user.email,
+            uid : res.user.uid
+          })
+          localStorage.setItem("authUser",JSON.stringify(res.user))
+  
+        })
+      }).catch((error) => {
+        console.log(error.message)
+      })
+    }
+  
+    const handleGoogleLoginSubmit = e => {
+      e.preventDefault()
+      handleGoogleLogin()
+    }
+
   if(context.user?.uid) {
     return <Navigate to="/" />
   }
   else{
     return (
 
-      <div className='darkbg p-2'>
+      <div className='darkbg'>
       
-      <Container className='text-left outfitfont p-5'>
+      <Container className='text-left outfitfont p-4'>
         <Row className='darkbg'>
           <Col lg={6} >
-            <img className='img-fluid mt-5' src={thalipic} />
-
-          </Col>
-          <Col lg={6} className='mt-4'>
-            <Card className='border border-0'>
+          <Card className='border border-0'>
               <Form className='darkbg' onSubmit={handleSubmit}>
               <div className='p-3'>
           <img width={300} src={logo} />
@@ -96,20 +119,31 @@ const SignUp = () => {
 
                   </FormGroup>
                   <FormGroup>
-                  <button type='submit' block className='rounded-0 border-0 text-dark loginbtn mt-3'>
+                  <button type='submit' block className='p-2 rounded-0  loginbtn mt-3'>
                     Sign Up
+                  </button>
+                  </FormGroup>
+                  <FormGroup>
+                  <p className='text-white text-center'> or </p>
+                  <button onClick={handleGoogleLoginSubmit}  type='submit' block className='p-2 rounded-0  secondaryTextColor loginbtn'>
+                    <FaGoogle className='mr-2' /> Sign Up with Google
                   </button>
                   </FormGroup>
                  
                   <FormGroup>
                   <p className='text-white text-center'>
                   Already have an account yet ?
-                  <Link className='ml-2 primaryTextColor' to='/signin'>Signin</Link></p>
+                  <Link className='ml-2 linkhover' to='/signin'>Signin</Link></p>
                   </FormGroup>
                 </CardBody>
                
               </Form>
             </Card>
+
+          </Col>
+          <Col lg={6} className='mt-4'>
+          <img className='img-fluid mt-5' src={thalipic} />
+            
           </Col>
 
         </Row>

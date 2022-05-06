@@ -1,14 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montez&display=swap');
 
-/* *{
+
+.homebody{
+    overflow-x: hidden;
+}
+
+
+/* CUSTOM SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 20px;
     background: #222222;
-} */
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey; 
+    border-radius: 10px;
+    background: #222222;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #DCCA87; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #DCCA87; 
+  }
 
 
 .darkbg{
     background-color: #222222;
+    background: #222222;
     
+}
+
+
+
+.logoutbtn{
+    background-color: transparent;
+    color: #aeaeae;
+    border: none;
+    cursor: pointer;
+}
+
+.logoutbtn:hover{
+    background-color: transparent;
+    color: #DCCA87;
+    transition: ease-in-out 300ms;
+    border: none;
+    cursor: pointer;
+}
+
+.addresslink:hover{
+   text-decoration: none;
+}
+
+
+
+.togglemenu{
+    background-color: #DCCA87;
+    color: #DCCA87;
 }
 
 .montezfont{
@@ -27,14 +83,45 @@
     color: #222222;
     width: 100%;
     padding: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+
+}
+
+.loginbtn:hover{
+    text-decoration: none;
+    background-color: #222222;
+    color: #DCCA87;
+    border: 2px solid #DCCA87;
+    width: 100%;
+    padding: 6px;
+    cursor: pointer;
+    transition: ease-in-out 250ms;
 }
 
 .primaryTextColor{
     color: #DCCA87;
 }
 
+.linkhover{
+    color: #DCCA87;
+    text-decoration: none;
+}
+
+.linkhover:hover{
+    color : #aeaeae;
+    text-decoration: none;
+    
+    transition: ease 300ms;
+
+}
+
 .secondaryTextColor{
     color : #222222
+}
+
+.darkTextColor{
+    background-color: #151515;
 }
 
 .inputfield{
@@ -46,4 +133,80 @@
     
 }
 
+
+
+
+
+
+
+.tags{
+    
+    background-color: #DCCA87;
+    color: hsl(0, 0%, 13%);
+
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    border: 2px solid transparent;
+
+   
+    
+}
+
+.tags:hover{
+  
+    background: #222222;
+    color: #DCCA87;
+    border: 2px solid #DCCA87;
+    transition: ease-in-out 300ms;
+    text-decoration: none;
+}
+
+.imghover:hover{
+    transform         : rotate(360deg) scale(1.15); 
+    transition: ease-in-out 300ms;
+
+}
+
+.cardhover:hover{
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;
+}
+
+.addtocart{
+    background-color: #000000;
+    color: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    width: 100%;
+}
+
+
 /* STYLING FOR ADMIN PAGE */
+
+.greyfontcolor{
+    color: #aeaeae;
+}
+
+.navlink{
+    color: #aeaeae;
+}
+
+.navlink:hover{
+    color: #DCCA87;
+    transition: ease-in-out 300ms;
+    text-decoration: none;
+}
+
+.lightfont{
+    font-weight: 200;
+}
+
+.blackbg{
+    background-color: #181818;
+}
+
+.iconsize{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
