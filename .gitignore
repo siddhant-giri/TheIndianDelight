@@ -14,7 +14,7 @@
 # production
 /build
 
-/src/utils/config.js
+
 
 # misc
 .DS_Store
