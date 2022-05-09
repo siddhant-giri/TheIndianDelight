@@ -244,7 +244,7 @@ const ViewProduct = () => {
         <img 
               height="450"
               width="450"
-              className="cardImg profile border-danger rounded mt-4"
+              className="cardImg profile border-danger rounded mt-4 img-fluid"
               src={product?.picture}
               />
               

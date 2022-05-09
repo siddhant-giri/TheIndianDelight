@@ -214,7 +214,7 @@ Drinks
           initial="hidden"
           animate="visible"
           >
-          <Link to='/search/biryanis' className='text-center'><img src={card1} width={420} />
+          <Link to='/search/biryanis' className='text-center'><img src={card1} className="img-fluid" width={420} />
           </Link>
           </motion.div>
           </Col>
@@ -225,7 +225,7 @@ Drinks
           animate="visible"
           >
 
-          <Link to='/search/salads' className='text-center '><img src={card2} width={420}/>
+          <Link to='/search/salads' className='text-center '><img src={card2} className="img-fluid" width={420}/>
           </Link>
           </motion.div>
           </Col>
@@ -236,7 +236,7 @@ Drinks
           animate="visible"
           >
 
-          <Link to='/search/maincourse' className=' text-center'><img src={card3} width={420}/>
+          <Link to='/search/maincourse' className=' text-center'><img src={card3} className="img-fluid" width={420}/>
           </Link>
           </motion.div>
           </Col>
