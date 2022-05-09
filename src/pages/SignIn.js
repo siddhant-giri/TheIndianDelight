@@ -98,7 +98,7 @@ const SignIn = () => {
             <Card className='border border-0'>
               <Form className='darkbg'>
               <div className='p-3'>
-          <img width={300} src={logo} className='align-left'/>
+          <img width={300} src={logo} className='align-left img-fluid'/>
           </div>
                 
                 <CardBody className='darkbg'>

@@ -94,7 +94,7 @@ const SignUp = () => {
           <Card className='border border-0'>
               <Form className='darkbg' onSubmit={handleSubmit}>
               <div className='p-3'>
-          <img width={300} src={logo} />
+          <img width={300} src={logo} className="img-fluid" />
           </div>
                 
                 <CardBody className='darkbg'>
