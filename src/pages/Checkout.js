@@ -120,7 +120,6 @@ const Checkout = () => {
   return (
     <div className='darkbg homebody outfitfont text-white'>
         <Header /> 
-
 <Row className='px-5 mt-5'>
     <Col className='mt-5'>
 
@@ -232,7 +231,7 @@ const Checkout = () => {
             </Col>
 
         </Row>
-
+        
 
 <div className='mt-5 p-5'><br/></div>
 

@@ -169,7 +169,11 @@ const Header = () => {
 
   return (
     
-    <Navbar className='darkbg px-5 ' light expand="sm" fixed='top'>
+    <motion.div
+    variants = {containervariants}
+      initial="hidden"
+      animate="visible">
+    <Navbar className='darkbg px-4' light expand="md" fixed='top'>
         <NavbarBrand><Link to="/" className='text-white'>
         <img src={logoicon} height={50} width={50} />
             </Link></NavbarBrand>
@@ -247,7 +251,7 @@ const Header = () => {
             </Nav>
         </Collapse>
     </Navbar>
-    // </motion.div>
+    </motion.div>
   )
 }
 

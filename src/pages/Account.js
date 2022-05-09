@@ -28,6 +28,7 @@ if(!context.user?.uid){
   return (
     <div className='darkbg homebody outfitfont text-white'>
         <Header />
+        {/* <div className='container-fluid'> */}
         <Row className='px-5 py-5 mt-5'>
             <Col lg={6}>
             <motion.div 
@@ -118,6 +119,7 @@ if(!context.user?.uid){
             </Col>
 
         </Row>
+        {/* </div> */}
         <Footer />
     </div>
   )

@@ -101,13 +101,16 @@ if(context.user?.email === "sidgiri2000@gmail.com"){
     <div className='darkbg homebody outfitfont text-white'>
         <Header />
 
-       <div>
-        <h1 className=' px-5 py-4 mt-4' style={{color : "transparent"}}>Categories for you</h1>
+       {/* <div className='container'> */}
+        <h1 className=' px-5 py-4 mt-3' style={{color : "transparent"}}>Categories for you</h1>
 
 
    
 
-
+        <motion.div
+    variants = {containerrightvariants}
+      initial="hidden"
+      animate="visible">
           <Row className='px-5 mb-4 text-center'>
 
 
@@ -182,7 +185,7 @@ Drinks
              
    
           </Row>
-       
+       </motion.div>
 
         <motion.h1
          variants = {containerlefttextvariants}
@@ -303,8 +306,9 @@ results.filter(result => result.type === "sweets").map(
 
 }
         </Row>
+        {/* </div> */}
+
         <Footer />
-        </div>
 </div>
   )
 }
