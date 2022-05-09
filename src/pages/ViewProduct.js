@@ -18,6 +18,8 @@ import { CartContext } from "../context/CartContext";
 import { toast } from "react-toastify";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import { motion } from "framer-motion";
+
 
 
 const ViewProduct = () => {
@@ -32,6 +34,43 @@ const ViewProduct = () => {
 
   const {product} = state
 
+
+    //framer motion variants
+
+    const containerleftvariants = {
+      hidden : {
+        x:'-20vw',
+        opacity : 0
+      },
+      visible : {
+        opacity : 1,
+        x : 0,
+        transition : {
+         ease : "easeInOut",
+         duration : 0.6
+          
+        }
+      },
+    }
+
+    const containerrightvariants = {
+      hidden : {
+        x:'20vw',
+        opacity : 0
+      },
+      visible : {
+        opacity : 1,
+        x : 0,
+        transition : {
+          ease  : "easeInOut",
+          
+          duration : 0.6
+        }
+      },
+    }
+
+
+
   if(context.user?.email === "sidgiri2000@gmail.com"){
     return(
       <div className="darkbg outfitfont text-white">
@@ -39,6 +78,11 @@ const ViewProduct = () => {
     <Container className="p-2">
       <Row className="">
         <Col lg={6} md="5" >
+         <motion.div
+         variants = {containerleftvariants}
+         initial="hidden"
+         animate="visible"
+         > 
           <Card className="border-0 darkbg">
             <CardBody className="darkbg border-0">
               
@@ -80,14 +124,21 @@ const ViewProduct = () => {
               </CardSubtitle>
             </CardBody>
           </Card>
+          </motion.div>
         </Col>
         <Col lg={4}>
+          <motion.div
+          variants = {containerrightvariants}
+          initial="hidden"
+          animate="visible"
+          >
         <img 
               height="550"
               width="550"
               className="cardImg profile border-danger"
               src={product?.picture}
               />
+              </motion.div>
         </Col>
 
       </Row>
@@ -128,9 +179,14 @@ const ViewProduct = () => {
   return (
     <div className="darkbg outfitfont text-white">
     <Header />
-    <Container className="p-3 mt-5">
+    <Container className="p-3 ">
       <Row className="mt-5">
-        <Col lg={6} md="5" className="mt-3">
+        <Col lg={6} md="5" className="mt-4">
+        <motion.div
+         variants = {containerleftvariants}
+         initial="hidden"
+         animate="visible"
+         > 
           <Card className="border-0 darkbg">
             <CardBody className="darkbg border-0">
               
@@ -143,13 +199,7 @@ const ViewProduct = () => {
                   Category : {product?.type}
                 </h4>
               </CardSubtitle>
-              {/* 
-              <CardSubtitle className="greyfontcolor mt-2">
-                <h4 className="lightfont">
-                  
-                  Rs. {product?.price}
-                </h4>
-  </CardSubtitle> */}
+              
               <CardSubtitle className="greyfontcolor mt-4">
                 <h5 >
                   
@@ -173,8 +223,14 @@ const ViewProduct = () => {
               </CardSubtitle>
             </CardBody>
           </Card>
+          </motion.div>
         </Col>
-        <Col lg={4} className="mt-3" >
+        <Col lg={4} className="mt-4" >
+        <motion.div
+         variants = {containerrightvariants}
+         initial="hidden"
+         animate="visible"
+         > 
         <button className="addtocart border-0 p-2 px-4 mt-4 cardhover" onClick={()=>addInCart(product)}>
                 <Row>
                   <Col>
@@ -192,7 +248,7 @@ const ViewProduct = () => {
               src={product?.picture}
               />
               
-
+          </motion.div>
         </Col>
 
       </Row>

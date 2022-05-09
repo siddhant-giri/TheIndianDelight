@@ -52,6 +52,7 @@ const Search = () => {
     <div className='darkbg homebody outfitfont text-white'>
       <Header />
           <Row className='p-5 mt-5'>
+        
         {
 
             results.filter(result => result.type === id).map(
@@ -65,6 +66,7 @@ const Search = () => {
 
         
         }
+        
         </Row >
         <Footer />
         </div>

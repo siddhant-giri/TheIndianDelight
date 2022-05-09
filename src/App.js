@@ -4,6 +4,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
+
 //react router
 import {BrowserRouter as Router , Route, Routes, useParams} from "react-router-dom"
 
@@ -39,12 +40,14 @@ import Checkout from './pages/Checkout';
 import Address from './pages/Address';
 import Account from './pages/Account';
 import Search from './pages/Search';
+import { AnimatePresence } from 'framer-motion';
 
 
 //init firebase
 firebase.initializeApp(firebaseConfig)
 
 
+//Setting initial state of products
 const initialState = {
   products : [],
   product : {},
@@ -53,17 +56,17 @@ const initialState = {
   isLoading : false
 }
 
-
+//getting cart item from localstorage
 const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart' || '[]'))
 
 const App = () => {
 
 
   const [user,setUser] = useState(null);
-  // const [address, setAddress] = useState("");
   const [state, dispatch] = useReducer(reducer,initialState);
   const [cartItem, setCartItem] = useState(cartFromLocalStorage);
 
+  //getting all the products from database
   const getProducts = async () => {
     dispatch({
       type : SET_LOADING,
@@ -94,6 +97,7 @@ const App = () => {
   },[]);
 
   
+  //authentication of a user and getting it from localstorage
   useEffect(() => {
     const localTodos = localStorage.getItem("authUser")
     console.log({localStorage});
@@ -103,23 +107,17 @@ const App = () => {
   },[])
 
 
-  // useEffect(()=>{
-  //   const localProducts = localStorage.getItem("products")
-  //   console.log({localStorage});
-  //   if(localProducts){
-  //   setCartItem(JSON.parse(localProducts))
-  // }
-  // },[])
-
   
 
+  
+  //All the routes with context as provider
   return (
     <Router>
+      <AnimatePresence exitBeforeEnter>
         <ToastContainer />
       <UserContext.Provider value={{user, setUser}}>
         <ProductContext.Provider value={{state, dispatch}}>
           <CartContext.Provider value={{ cartItem, setCartItem}}>
-            {/* <AddressContext.Provider value={{address,setAddress}}> */}
           <Routes>
             <Route exact path='/' element={<Home />}/>
             <Route exact path='/signin' element= {<SignIn />}/>
@@ -132,13 +130,14 @@ const App = () => {
             <Route exact path='/address' element={<Address />}/>
             <Route exact path='/myaccount' element={<Account />} />
             <Route exact path='/search/:id' element={<Search />} />
-            {/* <Route exact path='/ordersummary' element={<OrderSummary />}/> */}
+            
 
           </Routes>
-          {/* </AddressContext.Provider> */}
+          
           </CartContext.Provider>
           </ProductContext.Provider>
         </UserContext.Provider>
+        </AnimatePresence>
     </Router>
   )
 }

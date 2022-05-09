@@ -12,7 +12,9 @@ import Header from '../layout/Header';
 import Footer from '../layout/Footer';
 import {MdDelete} from "react-icons/md"
 import {FaStar, FaEdit, FaStripe} from "react-icons/fa"
+import {motion} from "framer-motion"
 
+import { containerleftvariants, containerrightvariants } from '../components/Animation';
 
 
 
@@ -111,6 +113,9 @@ const Checkout = () => {
       }
 
 
+           
+            
+
 
   return (
     <div className='darkbg homebody outfitfont text-white'>
@@ -118,12 +123,18 @@ const Checkout = () => {
 
 <Row className='px-5 mt-5'>
     <Col className='mt-5'>
+
         <h1 className='montezfont primaryTextColor mt-5'> Your Cart </h1></Col>
         </Row>
 
         <Row className='px-5  '>
             
             <Col lg={5}>
+            <motion.div
+            variants = {containerleftvariants}
+            initial="hidden"
+            animate="visible"
+            > 
         <ListGroup >
                 {
                     
@@ -156,12 +167,18 @@ const Checkout = () => {
                 }
         </ListGroup>
        
+                </motion.div>
             
             </Col>
 
 
 
             <Col lg={7}>
+            <motion.div
+            variants = {containerrightvariants}
+            initial="hidden"
+            animate="visible"
+            > 
             {
             contextCart.cartItem.length >= 1 ? (
                 <Card className='text-left mt-2' style={{background : '#2F2F2F'}}>
@@ -201,20 +218,23 @@ const Checkout = () => {
             <Card className='darkbg mt-4'>
             <CardBody className='darkbg'>
                 <Row>
-                    <Col lg={8}>
+                    <Col lg={8} className="mt-2">
                 <span className='primaryTextColor'>Delivery Address</span> : {address}
                 </Col>
-                <Col lg={4}> 
-                    <Link to="/address" className='loginbtn px-3 rounded'>Edit Address <FaEdit className='ml-2'/></Link>
+                <Col lg={4} className='mt-2'> 
+                    <Link to="/address" className='loginbtn px-3 rounded '>Edit Address <FaEdit className='ml-2'/></Link>
                 </Col>
                 </Row>
             </CardBody>
         </Card>
+        </motion.div>
             
             </Col>
 
         </Row>
 
+
+<div className='mt-5 p-5'><br/></div>
 
 
 

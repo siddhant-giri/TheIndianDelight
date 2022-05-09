@@ -1,6 +1,8 @@
 import React from 'react'
 import { Col, Row } from 'reactstrap'
 
+
+//Footer Component
 const Footer = () => {
   return (
     <div className='darkTextColor p-4 mt-4'>

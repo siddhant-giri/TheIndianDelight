@@ -7,6 +7,9 @@ import { UserContext } from '../context/UserContext'
 import Header from '../layout/Header';
 import thalipic from "../images/thalipic2.png"
 import {FaMapMarkerAlt, FaArrowLeft} from "react-icons/fa"
+import { motion } from 'framer-motion';
+import { containerleftvariants, containerrightvariants } from '../components/Animation';
+
 
 
 
@@ -21,7 +24,7 @@ const Address = () => {
     const [results, setResults] = useState([])
     
     
-
+    //Adding Customer's Delivery Address
     const handleAddressSubmit = async () =>{
 
         try{
@@ -53,12 +56,8 @@ const Address = () => {
 
     }
 
-    // if(handleSubmit){
-    //     return(
-    //         <Navigate to='/'/>
-    //     )
-    // }
-
+    
+    //fetching addres details of customer if present in db
     const fetchDetails = async () => {
         const {data} = await instance.get('/users.json')
         
@@ -79,12 +78,7 @@ const Address = () => {
     )
       )
 
-      
-      
-
       setResults(finalresult)
-
-
     }    
 
     useEffect(() => {
@@ -93,19 +87,27 @@ const Address = () => {
       
     
 
+      //Customer's Authentication
       if(!context.user?.uid){
         return <Navigate to="/signin" />
       }
+
+
 
   
     
 
   return (
     <div className='darkbg'>
-      {/* <Header /> */}
+      
        <Container className='text-left outfitfont p-5'>
            <Row>
                <Col lg={6}>
+                 <motion.div
+                 variants = {containerleftvariants}
+                 initial="hidden"
+                 animate="visible"
+                 >
                  <h2><Link to="/"><FaArrowLeft className='primaryTextColor'/></Link></h2>
                     <Form onSubmit={handleSubmit}>
                         <FormGroup>
@@ -131,10 +133,18 @@ const Address = () => {
                                 Submit
                         </button>
                     </Form>
+                    </motion.div>
                </Col>
                <Col lg={6} className="mt-5">
+                 <motion.div
+                 variants = {containerrightvariants}
+                 initial="hidden"
+                 animate="visible"
+                 >
+
+                 
             <img className='img-fluid' src={thalipic} />
-                  
+            </motion.div>
                </Col>
            </Row>
        </Container>

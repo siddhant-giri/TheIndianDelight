@@ -79,24 +79,27 @@
 /* STYLING FOR SIGNIN AND SIGNUP */
 
 .loginbtn{
-    background-color: #DCCA87;
-    color: #222222;
+    background-color: #A4945B;
+    color: #121212;
     width: 100%;
     padding: 6px;
     cursor: pointer;
     border: 2px solid transparent;
+    transition: ease-in-out 300ms;
+    
 
 }
 
 .loginbtn:hover{
     text-decoration: none;
-    background-color: #222222;
-    color: #DCCA87;
+    background-color: #DCCA87;
+    color: #222222;
     border: 2px solid #DCCA87;
     width: 100%;
     padding: 6px;
     cursor: pointer;
-    transition: ease-in-out 250ms;
+    transform: scale(1.05);
+    transition: ease-in-out 300ms;
 }
 
 .primaryTextColor{
@@ -124,6 +127,8 @@
     background-color: #151515;
 }
 
+
+
 .inputfield{
     width: 100%;
     border: 0;
@@ -141,29 +146,42 @@
 
 .tags{
     
-    background-color: #DCCA87;
-    color: hsl(0, 0%, 13%);
 
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    background: #222222;
+    color: #DCCA87;
+    border: 2px solid #DCCA87;
+
+    
+
     border-radius: 50px;
-    border: 2px solid transparent;
+
+    fill: #DCCA87;
+    
 
    
     
 }
 
 .tags:hover{
-  
-    background: #222222;
-    color: #DCCA87;
-    border: 2px solid #DCCA87;
+    background-color: #DCCA87;
+    color: hsl(0, 0%, 13%);
+    border: 2px solid transparent;
     transition: ease-in-out 300ms;
     text-decoration: none;
+    fill: #222222;
 }
+
+/* .icon{
+    fill: #DCCA87;
+}
+.icon:hover{
+    fill: #222222;
+} */
+
 
 .imghover:hover{
     transform         : rotate(360deg) scale(1.15); 
-    transition: ease-in-out 300ms;
+    transition: ease-in-out 600ms;
 
 }
 

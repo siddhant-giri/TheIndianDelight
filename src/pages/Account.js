@@ -1,29 +1,40 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import { Col, ListGroup, ListGroupItem, Row } from 'reactstrap'
+import { Col,  Row } from 'reactstrap'
 import {UserContext} from "../context/UserContext"
 import OrderSummary from "../components/OrderSummary"
 import Header from '../layout/Header'
-import {FaArrowRight, FaMapMarkerAlt} from "react-icons/fa"
+import {FaArrowRight } from "react-icons/fa"
 import greydivider from "../images/greydivider.png"
 import Footer from '../layout/Footer'
+import { motion } from 'framer-motion'
+import { containerrightvariants, containerleftvariants } from '../components/Animation'
 
+
+
+//My account page - displays imp links and past orders
 const Account = () => {
 
     
     const context = useContext(UserContext)
 
 
-    
+//If user not present in context  
 if(!context.user?.uid){
     return <Navigate to="/signin" />
   }
 
+//If user is present in context
   return (
     <div className='darkbg homebody outfitfont text-white'>
         <Header />
         <Row className='px-5 py-5 mt-5'>
             <Col lg={6}>
+            <motion.div 
+            variants = {containerleftvariants}
+            initial="hidden"
+            animate="visible"
+            >
                 <h1 className='text-uppercase mt-5' style={{
                     fontWeight: "900",
                     color : "#797979",
@@ -92,11 +103,18 @@ if(!context.user?.uid){
                            
 
                         </Row>
+                        </motion.div>
                    
             </Col>
             <Col lg={6}>
+            <motion.div 
+            variants = {containerrightvariants}
+            initial="hidden"
+            animate="visible"
+            >
                 <h1 className='montezfont primaryTextColor mt-5'>Past Orders</h1>
                 <OrderSummary />
+                </motion.div>
             </Col>
 
         </Row>

@@ -4,14 +4,15 @@ import {Row, Col} from "reactstrap"
 import {FaRegStar, FaStar} from "react-icons/fa"
 import {MdDelete, MdEdit} from "react-icons/md"
 
-import firebase from "firebase/compat/app"
-
 import {ProductContext} from "../context/ProductContext"
 import {UPDATE_PRODUCT, SET_SINGLE_PRODUCT} from "../context/action.types"
 
 import { toast, Toast } from 'react-toastify'
 import { getDatabase, ref, remove, update } from 'firebase/database'
 import { useNavigate } from 'react-router-dom'
+
+
+//Component for managing products in admin side
 
 const Product = ({product, productKey}) => {
 
@@ -22,6 +23,8 @@ const Product = ({product, productKey}) => {
 
   const db = getDatabase();
 
+  //Deleting a product from admin side and from db
+
   const deleteProduct = () => {
 
     remove(ref(db, `/products/${productKey}`))
@@ -30,6 +33,9 @@ const Product = ({product, productKey}) => {
     })
     .catch(err => console.log(err));
   }
+
+
+  //Updating a product from admin side and from db
 
   const updateImpProduct = () => {
     update(ref(db,`/products/${productKey}`),{
@@ -55,6 +61,9 @@ const Product = ({product, productKey}) => {
     history("/product/add");
 
   }
+
+
+  //Viewing a product 
 
   const viewSingleProduct = product => {
     dispatch({

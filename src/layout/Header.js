@@ -9,8 +9,10 @@ import { CartContext } from '../context/CartContext'
 import logoicon from "../images/logoicon.png"
 
 import {FaPowerOff, FaCartArrowDown, FaUser} from "react-icons/fa"
+import { motion } from 'framer-motion'
 
 
+//Navbar Component
 
 const Header = () => {
 
@@ -53,11 +55,6 @@ const Header = () => {
 
       setResults(finalresult)
 
-     
-
-        
-
-
     }
 
     useEffect(() => {
@@ -67,13 +64,35 @@ const Header = () => {
      
     })
 
+
+    const containervariants = {
+        hidden : {
+          x:'0vw',
+          opacity : 0
+        },
+        visible : {
+          opacity : 1,
+          x : 0,
+          transition : {
+            ease  : "easeInOut",
+            
+            duration : 1
+          }
+        },
+      }
+
+      
     
 
     // NAVBAR FOR ADMIN USE
 
     if(context.user?.email === "sidgiri2000@gmail.com"){
         return (
-            <div className='outfitfont darkbg container'>
+            <motion.div
+            variants = {containervariants}
+      initial="hidden"
+      animate="visible"
+            className='outfitfont darkbg container'>
                 <Navbar className='darkbg ' light expand="md">
         <NavbarBrand><Link to="/" className='text-white'>
                 <img src={logoicon} height={50} width={50} />
@@ -131,7 +150,7 @@ const Header = () => {
             </Nav>
         </Collapse>
     </Navbar>
-            </div>
+            </motion.div>
         )
     }
 
@@ -142,7 +161,8 @@ const Header = () => {
   // NAVBAR FOR CUSTOMER USE
 
   return (
-    <Navbar className='darkbg px-5 ' light expand="md" fixed='top'>
+    
+    <Navbar className='darkbg px-5 ' light expand="sm" fixed='top'>
         <NavbarBrand><Link to="/" className='text-white'>
         <img src={logoicon} height={50} width={50} />
             </Link></NavbarBrand>
@@ -168,7 +188,7 @@ const Header = () => {
         </NavbarText>
         
         <NavbarToggler onClick={toggle}  style={{backgroundColor : "#DCCA87"}}/>
-        <Collapse isOpen={isOpen} navbar>
+        <Collapse isOpen={isOpen} navbar >
         
             <Nav className="container justify-content-end" navbar>
                 {
@@ -220,6 +240,7 @@ const Header = () => {
             </Nav>
         </Collapse>
     </Navbar>
+    // </motion.div>
   )
 }
 

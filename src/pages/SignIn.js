@@ -10,6 +10,8 @@ import thalipic from "../images/thalipic2.png"
 import logo from "../images/logo.png"
 import {FaGoogle} from "react-icons/fa"
 import {Link} from "react-router-dom"
+import {motion} from "framer-motion"
+import { containerrightvariants, containerleftvariants } from '../components/Animation'
 
 
 const SignIn = () => {
@@ -70,6 +72,12 @@ const SignIn = () => {
     handleGoogleLogin()
   }
 
+
+
+ 
+
+
+
   if(context.user?.uid) {
     return <Navigate to="/" />
   }
@@ -82,6 +90,11 @@ const SignIn = () => {
       <Container className='text-left outfitfont p-4'>
         <Row className='darkbg'>
           <Col lg={6} >
+            <motion.div 
+            variants = {containerleftvariants}
+            initial="hidden"
+            animate="visible"
+            >
             <Card className='border border-0'>
               <Form className='darkbg'>
               <div className='p-3'>
@@ -143,9 +156,16 @@ const SignIn = () => {
                
               </Form>
             </Card>
+            </motion.div>
           </Col>
           <Col lg={6} className='mt-4'>
+            <motion.div
+            variants = {containerrightvariants}
+            initial="hidden"
+            animate="visible"
+            >
             <img className='img-fluid' src={thalipic} />
+            </motion.div>
           </Col>
 
         </Row>

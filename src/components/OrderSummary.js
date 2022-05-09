@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Button, Col, ListGroup, ListGroupItem, Row } from 'reactstrap';
+import { Col, ListGroup, ListGroupItem, Row } from 'reactstrap';
 import instance from '../apis/instance';
 import { SET_SINGLE_PRODUCT } from '../context/action.types';
 import { ProductContext } from '../context/ProductContext';
 import { UserContext } from '../context/UserContext'
 
 
+//Component for showing Customer's past orders
 
 const OrderSummary = () => {
 
@@ -41,22 +42,7 @@ const OrderSummary = () => {
             )
         }
 
-        // const finalresult = results.filter(result => result.uid === context.user.uid).map(
-        //     result => result.id
-        // )
-
-
-
-        
-
         setResults(fetchedResults);
-        
-
-        // setResults(finalresult)
-
-    
-
-
     }
 
     useEffect(()=>{

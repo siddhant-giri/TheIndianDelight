@@ -1,28 +1,31 @@
 import React, { useContext, useEffect, useState } from 'react'
-import firebase from 'firebase/compat/app'
 
+import {  Col, Container, Form, FormGroup, Input, Label, Row, Spinner } from 'reactstrap'
 
-import { Button, Col, Container, Form, FormGroup, Input, Label, Row, Spinner } from 'reactstrap'
-
+//Image related imports
 import {readAndCompressImage} from "browser-image-resizer"
-
 import {imageConfig} from "../utils/config"
 
-import {MdAddCircleOutline} from "react-icons/md"
+import Header from '../layout/Header'
 
 import { v4 } from 'uuid'
-import { ProductContext } from '../context/ProductContext'
 
+//context related imports
+import { UserContext } from '../context/UserContext'
+import { ProductContext } from '../context/ProductContext'
 import { UPDATE_PRODUCT } from '../context/action.types'
 
 import { Navigate, useNavigate } from 'react-router-dom'
 
 import { toast } from 'react-toastify'
-import { getDownloadURL, getStorage, uploadBytes, uploadBytesResumable } from 'firebase/storage'
+
+//firebase related imports
+import { getDownloadURL, getStorage,  uploadBytesResumable } from 'firebase/storage'
 import { getDatabase, ref as sref, set } from 'firebase/database'
 import { ref } from 'firebase/storage'
-import Header from '../layout/Header'
-import { UserContext } from '../context/UserContext'
+import { motion } from 'framer-motion'
+
+
 
 
 
@@ -36,6 +39,7 @@ const AddProducts = () => {
 
   const history = useNavigate();
 
+  //Initializing all the attributes required for uploading a product
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
@@ -47,6 +51,8 @@ const AddProducts = () => {
   const [star, setStar] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
 
+
+  //checking if product needs to be updated or a new product is getting added
   useEffect(() => {
     if(productToUpdate){
     setName(productToUpdate.name);
@@ -63,6 +69,8 @@ const AddProducts = () => {
 
   }, [productToUpdate])
 
+
+  //Uploading Image to firebase storage db
   const imagePicker = async e => {
     try{
       const file = e.target.files[0];
@@ -117,6 +125,7 @@ const AddProducts = () => {
     }
   }
  
+  //Adding a product 
   const addProduct = async () => {
     try{
       const db = getDatabase();
@@ -136,6 +145,7 @@ const AddProducts = () => {
     }
   }
 
+  //Updating a product
   const updateProduct = async () => {
     try {
       const db = getDatabase();
@@ -154,6 +164,7 @@ const AddProducts = () => {
     }
   }
 
+  //Submitting or adding product in db
   const handleSubmit = e => {
     e.preventDefault();
     isUpdate ? updateProduct() : addProduct();
@@ -169,6 +180,7 @@ const AddProducts = () => {
     history("/")
   }
 
+  //category array
   const options = [
     { label: 'Choose Category ', value: '' },
     { label: 'Thalis', value: 'thalis' },
@@ -178,25 +190,21 @@ const AddProducts = () => {
     { label: 'Starters', value: 'starters' },
     { label: 'Desserts', value: 'desserts' },
     { label: 'Salads', value: 'salads' },
-    { label: 'Others', value: 'others' },
-    
-
-
-    
+    { label: 'Drinks', value: 'drinks' },
+    { label: 'Others', value: 'others' },  
   ];
 
+  //dummy ratings array
   const ratings = [
     { label: 'Choose Rating ', value: '' },
     { label: '1', value: '1' },
     { label: '2', value: '2' },
     { label: '3', value: '3' },
     { label: '4', value: '4' },
-    { label: '5', value: '5' }
-
-
-    
+    { label: '5', value: '5' }    
   ];
 
+  
   const handleChange = (event) => {
     setType(event.target.value);
   };
@@ -205,6 +213,25 @@ const AddProducts = () => {
     setRating(event.target.value);
   };
 
+  const containervariants = {
+    hidden : {
+      x:'0vw',
+      opacity : 0
+    },
+    visible : {
+      opacity : 1,
+      x : 0,
+      transition : {
+        ease  : "easeInOut",
+        
+        duration : 0.8
+      }
+    },
+  }
+
+
+
+  //Admin Authentication
   if(context.user?.email !== "sidgiri2000@gmail.com"){
     return <Navigate to="/" />
   }
@@ -216,6 +243,11 @@ const AddProducts = () => {
       
       <Row>
         <Col md="6" className="offset-md-3 p-5">
+          <motion.div
+          variants = {containervariants}
+          initial="hidden"
+          animate="visible"
+          >
           <Form onSubmit={handleSubmit}>
             <div className="text-center">
               {isUploading ? (
@@ -326,6 +358,7 @@ const AddProducts = () => {
               {isUpdate ? "Update Product" : "Add Product"}
             </button>
           </Form>
+          </motion.div>
         </Col>
       </Row>
     </Container>

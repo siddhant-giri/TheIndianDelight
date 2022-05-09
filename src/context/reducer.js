@@ -1,6 +1,6 @@
-import { SET_ADDRESS, SET_LOADING, SET_PRODUCT, SET_SINGLE_PRODUCT, UPDATE_ADDRESS, UPDATE_PRODUCT, VIEW_SINGLE_PRODUCT } from "./action.types";
+import { SET_LOADING, SET_PRODUCT, SET_SINGLE_PRODUCT, UPDATE_PRODUCT, VIEW_SINGLE_PRODUCT } from "./action.types";
 
-// eslint-disable-next-line import/no-anonymous-default-export
+// reducer for on which action what function will be performed
 export default (state, action) => {
     switch (action.type) {
         case SET_PRODUCT:
@@ -14,11 +14,7 @@ export default (state, action) => {
         case SET_SINGLE_PRODUCT:
             return{...state, product : action.payload}  
         case VIEW_SINGLE_PRODUCT:
-            return{...state, product : action.payload} 
-        case SET_ADDRESS:
-            return action.payload == null ? {...state, addresses : []} : {...state, addresses : action.payload};
-        case UPDATE_ADDRESS:
-            return {...state, addressToUpdate : action.payload, addressToUpdateKey : action.key}             
+            return{...state, product : action.payload}            
         default:
             return state;
     }
