@@ -25,10 +25,17 @@ const Header = () => {
 
     let count  = 0;
 
-    contextCart.cartItem.forEach(item => {
-        count = count + 1
-    })
 
+    contextCart.cartItem.forEach(f => {
+        count = count +1
+        console.log(f);
+    })
+    
+
+    // while(contextCart.cartItem){
+    //     count = count + 1
+
+    // }
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -62,7 +69,7 @@ const Header = () => {
     fetchDetails();
     
      
-    })
+    },[])
 
 
     const containervariants = {

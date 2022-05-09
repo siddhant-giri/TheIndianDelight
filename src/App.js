@@ -57,7 +57,7 @@ const initialState = {
 }
 
 //getting cart item from localstorage
-const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart' || '[]'))
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
 
 const App = () => {
 
