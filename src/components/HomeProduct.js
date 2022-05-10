@@ -40,7 +40,7 @@ const HomeProduct = ({product}) => {
         animate="visible"
         >
                 <img height={150} width={150} src={product.picture} className="rounded-circle imghover" />
-                <p className='text-gray-100 text-6xl lightfont'>{product.name}</p>
+                <p className='text-gray-100 text-6xl lightfont mt-2'>{product.name}</p>
                 <Row>
                
                 <Col><p><FaRupeeSign /> {product.price}</p></Col>

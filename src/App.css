@@ -10,21 +10,21 @@
 /* CUSTOM SCROLLBAR */
 
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 14px;
     background: #222222;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 2px grey; 
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background: #222222;
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #DCCA87; 
-    border-radius: 10px;
+    background: #A4945B; 
+    /* border-radius: 10px; */
   }
   
   /* Handle on hover */
@@ -139,6 +139,12 @@
 }
 
 
+.arrowright:hover{
+    margin-left: 16px;
+    transition: ease 1000ms;
+
+}
+
 
 
 
@@ -149,7 +155,7 @@
 
     background: #222222;
     color: #DCCA87;
-    border: 2px solid #DCCA87;
+    border: 1px solid #DCCA87;
 
     
 
@@ -165,7 +171,7 @@
 .tags:hover{
     background-color: #DCCA87;
     color: hsl(0, 0%, 13%);
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     transition: ease-in-out 300ms;
     text-decoration: none;
     fill: #222222;
@@ -179,8 +185,10 @@
 } */
 
 
+
+
 .imghover:hover{
-    transform         : rotate(360deg) scale(1.15); 
+    transform         : rotate(360deg) scale(1.2); 
     transition: ease-in-out 600ms;
 
 }

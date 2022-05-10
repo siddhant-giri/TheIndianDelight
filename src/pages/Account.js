@@ -56,7 +56,7 @@ if(!context.user?.uid){
                             </Col>
                             <Col lg={4} className="mt-4">
                             <Link to="/address">
-                                <FaArrowRight className='greyfontcolor'/>
+                                <FaArrowRight className='greyfontcolor arrowright'/>
                                 </Link>
                             </Col>
                            
@@ -77,7 +77,7 @@ if(!context.user?.uid){
                             </Col>
                             <Col lg={4} className="mt-4">
                             <Link to="/">
-                                <FaArrowRight className='greyfontcolor'/>
+                                <FaArrowRight className='greyfontcolor arrowright'/>
                                 </Link>
                             </Col>
                            
@@ -98,7 +98,7 @@ if(!context.user?.uid){
                             </Col>
                             <Col lg={4} className="mt-4">
                             <Link to="/">
-                                <FaArrowRight className='greyfontcolor'/>
+                                <FaArrowRight className='greyfontcolor arrowright'/>
                                 </Link>
                             </Col>
                            

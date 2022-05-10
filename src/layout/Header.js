@@ -195,7 +195,7 @@ const Header = () => {
         </NavbarText>
         
         <NavbarToggler onClick={toggle}  style={{backgroundColor : "#DCCA87"}}/>
-        <Collapse isOpen={isOpen} navbar >
+        <Collapse isOpen={isOpen} navbar className='collapsebg'>
         
             <Nav className="container justify-content-end" navbar>
                 {
